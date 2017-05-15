@@ -1,4 +1,4 @@
-# Lesson 4 - Due May 15, 2017 (also covered in Lesson 5)
+# Lesson 4 - Due May 22, 2017 (also covered in Lesson 5)
 
 ## Assignment
 
