@@ -8,7 +8,7 @@ function formatPrice (priceInCents) {
 class PastryPage extends React.Component {
   constructor () {
     super()
-    this.addToOrder = this.addToOrder.bind(this)
+    this.addToOrder = this.addToOrder.bind(this) // makes it reference the inside instead of the outside of the function
   }
 
   addToOrder (e) {
@@ -30,7 +30,7 @@ class PastryPage extends React.Component {
             <div className='price'>{formatPrice(pastry.price)}</div>
           </div>
         </div>
-        <form method='POST' action='/orders' className='add-to-order' onSubmit={this.addToOrder}>
+        <form method='POST' action='/order' className='add-to-order' onSubmit={this.addToOrder}>
           <input type='hidden' value={pastry.name} ref={(input) => { this.pastryName = input }} />
           <button type='submit'>Add to Order</button>
         </form>

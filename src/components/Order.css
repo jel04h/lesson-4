@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  background-color: #F9F9F9;
+}
+
+td {
+  padding-top: 15px;
+}
+
