@@ -55,14 +55,9 @@ class Root extends React.Component {
     console.log('added to order!')
   }
 
-  addToOrder (e) {
-    e.preventDefault()
-    console.log('added to order!')
-  }
-
   render () {
     return (
-        <Router history={hashHistory}>
+      <Router history={hashHistory}>
         <App>
           <Switch>
             <Route exact path='/' render={props => (
@@ -82,17 +77,14 @@ class Root extends React.Component {
                 )
               }
             }} />
-<<<<<<< HEAD
             <Route exact path='/order' render={props => (
               <Order order={this.state.order} />
             )} />
 
-=======
->>>>>>> 5fe8453449e677b4e7f8e0395b88e45946711ccd
           </Switch>
         </App>
       </Router>
-      )
+    )
   }
 }
 
