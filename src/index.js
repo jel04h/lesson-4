@@ -32,6 +32,7 @@ class Root extends React.Component {
       }
     }
     this.addToOrder = this.addToOrder.bind(this)
+    this.clearOrder = this.clearOrder.bind(this)
   }
 
   addToOrder (event) {
@@ -55,6 +56,21 @@ class Root extends React.Component {
     console.log('added to order!')
   }
 
+  clearOrder (event) {
+    event.preventDefault()
+    console.log({target: event.target})
+    const order = Object.assign({}, this.state.order)
+    order.items = []
+    order.price = 0
+
+    this.setState({
+      order
+    })
+    console.log({event})
+    console.log({type: event.type})
+    console.log('cleared order!')
+  }
+
   render () {
     return (
       <Router history={hashHistory}>
@@ -62,6 +78,10 @@ class Root extends React.Component {
           <Switch>
             <Route exact path='/' render={props => (
               <PastryList pastries={this.state.pastries} />
+            )} />
+            {/* Needs to be before :pastry so that it doesn't match there instead */}
+            <Route exact path='/order' render={props => (
+              <Order order={this.state.order} clear={this.state.clearOrder} />
             )} />
             <Route path='/:pastry' render={props => {
               const pastryName = props.match.params.pastry
@@ -77,9 +97,6 @@ class Root extends React.Component {
                 )
               }
             }} />
-            <Route exact path='/order' render={props => (
-              <Order order={this.state.order} />
-            )} />
 
           </Switch>
         </App>

@@ -6,19 +6,17 @@ function formatPrice (priceInCents) {
 }
 
 class Order extends React.Component {
-  constructor () {
-    super()
-    this.addToOrder = this.addToOrder.bind(this)
-  }
-
-  addToOrder (e) {
-    e.preventDefault()
-    console.log(this.pastryName.value)
-  }
-
   render () {
-    const allpastries = this.props.pastry
-    const theorder = this.props.order
+    const theOrder = this.props.order
+
+    const pastries = theOrder.items.map((pastry) => // .map does the same thing for everything in a list - pastry is pastry for all pastries in the list of pastries.
+      <tr>
+        <td>{pastry.name}</td>
+        <td>{formatPrice(pastry.price)}</td>
+        <td>{pastry.quantity}</td>
+      </tr>
+    )
+
     return (
       <div className='order'>
         <ul className='order'>
@@ -34,16 +32,15 @@ class Order extends React.Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>{allpastries[4].name}</td>
-                <td>price</td>
-                <td>quantity</td>
-                <td><button>remove</button></td>
-              </tr>
+              {pastries}
             </tbody>
           </table>
-          <p>total price: </p>
+          <p>total price: {formatPrice(theOrder.price)}</p>
           <button>Check out</button>
+          <form method='POST' action='/orders' onSubmit={this.props.clear}>
+            <input type='hidden' value='clear' />
+            <input type='submit' value='Clear' />
+          </form>
         </ul>
       </div>
     )
