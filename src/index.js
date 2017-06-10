@@ -81,7 +81,7 @@ class Root extends React.Component {
             )} />
             {/* Needs to be before :pastry so that it doesn't match there instead */}
             <Route exact path='/order' render={props => (
-              <Order order={this.state.order} clear={this.state.clearOrder} />
+              <Order order={this.state.order} clear={this.clearOrder} />
             )} />
             <Route path='/:pastry' render={props => {
               const pastryName = props.match.params.pastry
